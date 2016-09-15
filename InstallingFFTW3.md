@@ -11,13 +11,13 @@ If `root` is unavailable, `FFTW3` can also be installed under any user account a
 * Unpack it, cd into its directory, and type
  
   ```
-  ./configure --prefix=$HOME [--enable-sse2]
-  ```
+./configure --prefix=$HOME [--enable-sse2]
+```
   where `'--enable'` option allows effective use of modern processors. You may also look through the [whole list of configuration options](http://www.fftw.org/fftw3_doc/Installation-on-Unix.html). Then type
   ```
-  make
-  make install
-  ```
+make
+make install
+```
 * Modify the initialization of internal variables `FFTW3_INC_PATH` and `FFTW3_LIB_PATH` in the `Makefile`, as described in [CompilingADDA](CompilingADDA.md).
 
 [Installation of FFTW 3 on non-Unix systems](http://www.fftw.org/fftw3_doc/Installation-on-non_002dUnix-systems.html) is slightly more complicated.
@@ -30,8 +30,8 @@ If you want to compile `ADDA` on Windows yourself, [install FFTW3 on Windows](ht
 * Create a copy of `libfftw3-3.dll` and rename it to `libfftw3.dll`. On Windows Vista and newer you may instead create a symbolic link (administrator privileges may be required for that)
 
   ```
-  mklink libfftw3.dll libfftw3-3.dll
-  ```
+mklink libfftw3.dll libfftw3-3.dll
+```
   This is required because the `FFTW3` DLL package do not contain appropriate import-library file to use during linking. The DLL itself can be used for that, but it needs to be named a little bit differently to be automatically found by the linker.
 * Either
   * modify the initialization of internal variables `FFTW3_INC_PATH` and `FFTW3_LIB_PATH` in the `Makefile` to point to the directory(ies) contating `fftw3.h` and `libfftw3.dll` respectively (see [CompilingADDA](CompilingADDA.md)).
