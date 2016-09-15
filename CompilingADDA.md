@@ -6,21 +6,18 @@ The simplest way to compile `ADDA` is using the provided `Makefile`. This can be
 
 Position yourself in the `src/` directory of the [ADDA package](PackageDescription.md) and type "`make seq`", "`make mpi`", or "`make ocl`" to compile the sequential, MPI, or OpenCL version respectively (on some systems, GNU `make` is available under a different name, e.g. `gmake`) . Compiled executables are then `src/seq/adda`, `src/mpi/adda_mpi`, and `src/ocl/adda_ocl` respectively. Full list of possible targets (arguments to `make`) is the following:
 
+| Argument | Description |
+|:----|:------------|
 | `all` | The default target (if none is specified). Invokes `seq`, `mpi`, and `ocl`. |
-|:------|:----------------------------------------------------------------------------|
 | `seq` | Compiles sequential executable of `ADDA`.                                   |
 | `mpi` | Compiles parallel ([MPI](http://www.mpi-forum.org/)) executable of `ADDA`.  |
 | `ocl` | Compiles [OpenCL](http://www.khronos.org/opencl/) (GPU accelerated) executable of `ADDA` |
-
 | `cleanfull` | Removes all files produced during compilation and `ADDA` runs. Invokes `clean` and `cleanruns`. |
-|:------------|:------------------------------------------------------------------------------------------------|
 | `clean`     | Removes all files produced during compilation. Invokes `cleanseq`, `cleanmpi`, and `cleanocl`.  |
 | `cleanseq`  | Removes files produced during compilation of sequential version (located in `src/seq/`).        |
 | `cleanmpi`  | Removes files produced during compilation of MPI version (located in `src/mpi/`).               |
 | `cleanocl`  | Removes files produced during compilation of OpenCL version (located in `src/ocl/`).            |
-
 | `cleanruns` | Removes all files produced during `ADDA` runs. Invokes `cleanrunsseq`, `cleanrunsmpi`, and `cleanrunsocl`. |
-|:------------|:-----------------------------------------------------------------------------------------------------------|
 | `cleanrunsseq` | Removes files produced during run of sequential version (located in `src/seq/`).                           |
 | `cleanrunsmpi` | Removes files produced during run of MPI version (located in `src/mpi/`).                                  |
 | `cleanrunsocl` | Removes files produced during run of OpenCL version (located in `src/ocl/`).                               |
@@ -48,9 +45,7 @@ Note that multi-word value of `OPTIONS` need to be enclosed in quotes.
 |          | `ibm`     | [IBM compilers](http://www-142.ibm.com/software/products/us/en/subcategory/SW760). Has not been recently tested, hence may need modification of compiler flags. |
 |          | `hpux`    | Specific options for HP-UX ia64 environment |
 |          | `other`   | Use this if none of the above works. Need manual specification of compiler flags (see below). |
-
 | `OPTIONS` | any combination of | |
-|:----------|:-------------------|:|
 |           | `DEBUG`            | Turns on producing debug symbols (`-g`) and warnings by the compiler and slightly reduces optimization level. This option is irrelevant, if `DEBUGFULL` is used. |
 |           | `DEBUGFULL`        | Same as `DEBUG`, but turns off optimization completely and turns on additional diagnostic messages in the source code. |
 |           | `FFT_TEMPERTON`    | Uses built-in FFT routines by C. Temperton. This is recommended if you have problems installing `FFTW3`. |
@@ -65,9 +60,7 @@ Note that multi-word value of `OPTIONS` need to be enclosed in quotes.
 |           | `USE_SSE3`         | Enable SSE3 optimizations for the `gcc` compiler and hardware that supports it (most hardware do nowadays). This is used for the calculation of the dipole interaction term, and should yield significant acceleration when used in conjunction with the `SPARSE` option. In normal mode the benefits are minor. |
 |           | `CLFFT_APPLE`      | Uses built-in clFFT routines by Apple for OpenCL version (requires C++ compiler). This is recommended if you have problems installing `clAmdFft`. |
 |           | `NO_SVNREV`        | Disables obtaining the current subversion revision number of the source code during compilation. Use it only if the corresponding procedure causes any problems (including significant delays). |
-
 | `EXTRA_FLAGS` | any | Additional flags to be passed to the compiler (for all languages). For instance, `-m32` to compile 32-bit binaries in a 64-bit environment. |
-|:--------------|:----|:--------------------------------------------------------------------------------------------------------------------------------------------|
 | `FFTW3_INC_PATH` | path | Path to `FFTW3` headers. May be not needed, if `FFTW3` is [installed](InstallingFFTW3.md) on a whole system.                                |
 | `FFTW3_LIB_PATH` | path | Path to `FFTW3` library. May be not needed, if `FFTW3` is [installed](InstallingFFTW3.md) on a whole system.                                |
 
