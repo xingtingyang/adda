@@ -10,7 +10,7 @@ There are two options:
   * Download and install it from the corresponding vendor ([Nvidia](http://www.nvidia.com/page/drivers.html) or [AMD](http://support.amd.com/us/gpudownload)).
   * On Unix systems driver packages may be available. It is recommended to use them, since they are more convenient to install and update. Also they cause less trouble with kernel updates. The drawback is a delay in updates relative to original vendor drivers. Moreover, for some systems there are no official packages, since the driver is not open-source. In this case search in non-official repositories, like [RPM Fusion](http://rpmfusion.org/). On Ubuntu search for packages [fglrx-updates](http://packages.ubuntu.com/search?suite=default&section=all&arch=any&keywords=fglrx-updates) (AMD) or [nvidia-###-updates](http://packages.ubuntu.com/search?suite=default&section=all&arch=any&keywords=nvidia+updates).
 
-The recent driver alone is sufficient to run `ADDA` OpenCL executables, e.g. those that are [provided for Windows](http://code.google.com/p/a-dda/wiki/PackageDescription#Windows_executables).
+The recent driver alone is sufficient to run `ADDA` OpenCL executables, e.g. those that are [provided for Windows](PackageDescription.md#windows-executables).
 
 ## Headers and libraries ##
 
@@ -28,7 +28,7 @@ These are required to compile OpenCL version of `ADDA`. There are several _alter
 If you obtain headers and libraries in a package (on Unix), the latter should also set the paths appropriately (to make them available to the compiler). Otherwise, you should either
   * set these paths yourself:
     * _on Unix_ add headers location to environmental variables `C_INCLUDE_PATH` and `CPLUS_INCLUDE_PATH` and libraries location - to `LIBRARY_PATH` and `LD_LIBRARY_PATH` (for linking and runtime). Setting `LD_LIBRARY_PATH` can be replaced by modifying `/etc/ld.so.conf`, which sometimes is done automatically during driver installation.
-    * _on Windows_ copy contents of corresponding folders to `include` and `lib` folders of the [MinGW/MSYS environment](InstallingMinGW#Advanced_options.md).
+    * _on Windows_ copy contents of corresponding folders to `include` and `lib` folders of the [MinGW/MSYS environment](InstallingMinGW.md#advanced-options).
   * or specify paths to corresponding `include` and `lib` folders in file `src/ocl/Makefile`, as described in [CompilingADDA](CompilingADDA.md).
 
 # Implementation #
