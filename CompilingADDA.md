@@ -6,8 +6,8 @@ The simplest way to compile `ADDA` is using the provided `Makefile`. This can be
 
 Position yourself in the `src/` directory of the [ADDA package](PackageDescription.md) and type "`make seq`", "`make mpi`", or "`make ocl`" to compile the sequential, MPI, or OpenCL version respectively (on some systems, GNU `make` is available under a different name, e.g. `gmake`) . Compiled executables are then `src/seq/adda`, `src/mpi/adda_mpi`, and `src/ocl/adda_ocl` respectively. Full list of possible targets (arguments to `make`) is the following:
 
-| Argument | Description |
-|:----|:------------|
+| Target | Description |
+|:-------|:------------|
 | `all` | The default target (if none is specified). Invokes `seq`, `mpi`, and `ocl`. |
 | `seq` | Compiles sequential executable of `ADDA`.                                   |
 | `mpi` | Compiles parallel ([MPI](http://www.mpi-forum.org/)) executable of `ADDA`.  |
