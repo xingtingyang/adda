@@ -1,20 +1,18 @@
 Many researchers have used `ADDA` and compared it with other codes based on the DDA or other light scattering methods. The purpose of this page is to give a few representative examples instead of providing a full overview. Figures on this page are either in vector format (svg) or can be clicked to open a larger image.
 
-
-
 # Other DDA codes #
 
 Comparison of four different DDA codes, including `ADDA` 0.7a and [DDSCAT 6.1](http://www.astro.princeton.edu/~draine/DDSCAT.6.1.html), was performed by Penttila et al. [[1](#references)] for simulation of different wavelength-sized particles both in single orientation and averaged over all orientations. Here we present a brief summary and a few sample results from this paper. `ADDA` is faster than other codes by a factor of 2.3 to 16 and it is the least memory consuming code. Results of simulations of light scattering by a sphere in a fixed orientation are shown in the following figure. All scatterers considered in this section have volume-equivalent size parameter 5.1 and refractive index 1.313. `SIRRI` and `ZDD` denote codes by Simulintu Oy in Finland and Zubko and Shkuratov respectively. All codes result in almost identical relative error of _S_<sub>11</sub>(_θ_), as compared with the Mie theory, showing that the codes use the same formulation of DDA, except `SIRRI` that is slightly different.
 
-![http://a-dda.googlecode.com/svn/wiki/sphere_dda.svg](sphere_dda.svg)
+![Different DDA implementations for a sphere](sphere_dda.svg)
 
 On contrary, orientation averaging schemes of the codes are different. Orientation averaged results for a randomly constructed aggregate of 50 spheres are shown in the next figure (here and below reference results are obtained using the T-matrix method). One can see that results differ, and the errors of `ADDA` results are the largest. That is explained by the fact that for `ADDA` we used 16×9×8 sample points for Euler angles _α_, _β_, and _γ_ respectively. Other codes used less _α_ sample angles (11, 4, and 1) but more _β_ and _γ_ sample angles, resulting in approximately the same total number of sample angles. Therefore, `ADDA` is faster at expense of possible deterioration of accuracy. However, for other asymmetric particles studied in [[1](#References.md)] `ADDA` results in comparable to other codes accuracy even with current settings (particle showed here was the least favorable for `ADDA`).
 
-![http://a-dda.googlecode.com/svn/wiki/aggregate_dda.svg](http://a-dda.googlecode.com/svn/wiki/aggregate_dda.svg)
+![Different DDA implementations for an aggregate](aggregate_dda.svg)
 
 The results for axisymmetric particles are principally different. Here we consider only a prolate spheroid with aspect ratio 2 (see the next figure). One can see that `ADDA` result (the first curve) is much less accurate than other codes. The accuracy of `ADDA` is unusually bad, even compared to the previous figure. In the following we explain this fact. For axisymmetric particles the dipole array is symmetric with respect to 90° rotation over the symmetry axis. Moreover, the range from 0° to 90° for _γ_ is mirror symmetric with respect to the 45°. Hence, the most efficient way of orientation averaging for such particles is to sample _γ_ uniformly in the range from 0° to 45°, and also to use less _γ_ sample angles but more _β_ sample angles. Sampling by other codes satisfies these conditions. The situation for `ADDA` is remarkably different. 8 _γ_ angles are used, which are spaced with interval 45°, hence they map in only two distinct angles (0° and 45°) inside the reduced range. That means that for axisymmetric particles `ADDA` repeats calculation for four equivalent sets of orientations. Moreover, Romberg integration, which is a higher order method, performs unsatisfactory when applied to a range that contains several periods of the periodic function to be integrated and only a few points per each period. An analogous discussion applies to the _β_ angle since both spheroid and cylinder have a symmetry plane perpendicular to the symmetry axis.
 
-![http://a-dda.googlecode.com/svn/wiki/spheroid_dda.svg](http://a-dda.googlecode.com/svn/wiki/spheroid_dda.svg)
+![Different DDA implementations for a spheroid](spheroid_dda.svg)
 
 It is important to note that `ADDA` is perfectly suitable to calculate orientation averaging of axisymmetric particles efficiently, but it requires a user to manually modify the sampling intervals for Euler angles in the input files. For instance, for the discussed scatterers the choice of 17 _β_ angles from 0° to 90° and 5 _γ_ angles from 0° to 45° is appropriate. The result of this tuned orientation averaging for spheroid, obtained using `ADDA` 0.76, is shown as the last curve in the previous figure. It requires about 20% more computational time than the initial scheme, but still it is significantly faster than other codes. One can see that its accuracy is comparable to or even better than that of other codes. This result was not included in [[1](#references)], because such modifications of the input files were considered a ‘fine-tuning’. `DDSCAT` may also benefit from reduction of angle ranges, but in much lesser extent (in these particular cases).
 
@@ -30,7 +28,7 @@ adda -grid 64 -lambda 1 -size 1.59155 -beam barton5 2 1 1 1 -ntheta 180
 ```
 The results are shown in the following figure, indicating perfect agreement between two methods.
 
-![http://a-dda.googlecode.com/svn/wiki/mmp_dda.svg](http://a-dda.googlecode.com/svn/wiki/mmp_dda.svg)
+![DDA vs. MMP](mmp_dda.svg)
 
 # Null-field method with discrete sources (anisotropic material) #
 
@@ -40,7 +38,7 @@ adda -size 4 -shape ellipsoid 1.5 2 -m 1.5 0 1.1 0 1.1 0 -anisotr -orient 90 0 0
 ```
 where the last option (`-orient`) was used for convenience to make the first two columns of the file `mueller`  produced by `ADDA` (corresponding to _yz_-plane in particle reference frame) equivalent to the sought _S_<sub>11</sub> in _xz_-plane in laboratory reference frame.
 
-![http://a-dda.googlecode.com/svn/wiki/nfmds_dda.svg](http://a-dda.googlecode.com/svn/wiki/nfmds_dda.svg)
+![DDA vs. NFM-DS](nfmds_dda.svg)
 
 # Finite difference time domain method #
 
@@ -48,7 +46,7 @@ A systematic comparison of the DDA and the finite difference time domain (FDTD) 
 
 The main conclusion is summarized in the following figure, where a ratio of computational times of two methods is shown versus _x_ for different _m_. The DDA is more than an order of magnitude faster for _m_ ≤1.2 and _x_>30, while for _m_ ≥1.7 the FDTD is faster by the same extent. _m_=1.4 is a boundary value, for which both methods perform comparably. The DDA errors of _S_<sub>11</sub>(_θ_) for _m_=1.02 are mostly due to the shape errors, which are expected to be smaller for rough and/or inhomogeneous particles. Simulations for a few sample biological cells lead to the same conclusions. Although these conclusions depend on particular scattering quantity and on the implementations of both methods, they will not change principally unless a major improvement of one of the method is made. However, for general complex refractive indices the results of the comparison are expected to be significantly different.
 
-![http://a-dda.googlecode.com/svn/wiki/fdtd_dda.svg](http://a-dda.googlecode.com/svn/wiki/fdtd_dda.svg)
+![DDA vs. FDTD](fdtd_dda.svg)
 
 # Pseudo-spectral time domain method #
 
@@ -56,7 +54,7 @@ A systematic comparison of the DDA and the pseudo-spectral time domain (PSTD) me
 
 The main conclusion is summarized in the following figure, where the regions of superiority of the DDA and the PSTD are shown. Differences of the simulation times (to reach the same accuracy) were up to a factor of 100 (both ways). Simulations for a few sample spheroidal particles lead to the same conclusions.
 
-![http://a-dda.googlecode.com/svn/wiki/pstd_dda.svg](http://a-dda.googlecode.com/svn/wiki/pstd_dda.svg)
+![DDA vs. PSTD](pstd_dda.svg)
 
 Although these conclusions depend on particular scattering quantity and on the implementations of both methods, they will not change principally unless a major improvement of one of the method is made. In particular, we have tried to push `ADDA` to the limit for two spheres (_x_=10, _m_=2 and _x_=80, _m_=1.2). We tried different DDA formulations and iterative solvers, resulting in 14 and 4 times decrease of computational time for these two cases, respectively. However, these times were still two-three times larger than that of the PSTD. However, for general complex refractive indices and/or inhomogeneous particles the results of the comparison are expected to be significantly different.
 
@@ -66,7 +64,7 @@ In particular, a more recent paper [[5](#references)] considered refractive inde
 
 Bi et al. compared `ADDA` with the improved geometric optics method (IGOM) for simulation of randomly-oriented ellipsoids [[6](#references)] and hexahedra [[7](#references)]. The accuracy of the `ADDA` was assumed good enough (unfortunately, the details of the DDA simulations were not specified), while accuracy of IGOM is tested against it. A particular example from [[7](#references)] is shown in the following figure, depicting integrated scattering properties of randomly oriented nonsymmetric hexahedra versus the size parameter. One can see that both methods agree in intermediate size parameter range, thus effectively closing the gap between geometric-optics and wave-optics methods. However, the deviations for angle-resolved light scattering properties ,e.g. _S_<sub>11</sub>, can still be significant (see [[7](#references)] for details).
 
-[![IGOM-DDA comparison](http://a-dda.googlecode.com/svn/wiki/igom_dda_small.png)](igom_dda_large.png)
+[![DDA vs. IGOM](igom_dda_small.png)](igom_dda_large.png)
 
 # `Tsym` for cubes #
 
@@ -75,14 +73,15 @@ Bi et al. compared `ADDA` with the improved geometric optics method (IGOM) for s
 adda -size 8 -m 1.6 0.01 -ntheta 180 -shape box -int fcd -pol fcd -eps 10 -grid <nx>
 ```
 where 5 grid sizes (`<nx>`) were used from 256 to 512, and extrapolation technique [[9](#references)] was employed afterwards. Also, a special technique was used for `Tsym` results to estimate computational accuracy. Results for the integral scattering quantities are summarized in the following table. Uncertainties (±) are in the last shown digits of the corresponding value and have nominal confidence level of 95%.
-| | _Q_<sub>ext</sub> | _Q_<sub>sca</sub> | _Q_<sub>abs</sub> |
-|:|:------------------|:------------------|:------------------|
-| `ADDA` | 4.2480442 ± 3     | 3.9715646 ± 3     | 0.2764796 ± 1     |
-| `Tsym` | 4.24775 ± 33      | 3.97156 ± 24      | 0.2757 ± 7        |
+
+|        | _Q_<sub>ext</sub> | _Q_<sub>sca</sub> | _Q_<sub>abs</sub> |
+|:-------|:------------------|:------------------|:------------------|
+| `ADDA` | 4.2480442 ± 3 | 3.9715646 ± 3 | 0.2764796 ± 1 |
+| `Tsym` | 4.24775 ± 33 | 3.97156 ± 24 | 0.2757 ± 7 |
 
 Below is the results for intensity _I_=_S_<sub>11</sub> in the _yz_-plane, showing relative differences between the two methods and their internal error estimates.
 
-![http://a-dda.googlecode.com/svn/wiki/tsym_dda.svg](http://a-dda.googlecode.com/svn/wiki/tsym_dda.svg)
+![DDA vs. Tsym](tsym_dda.svg)
 
 # Particles near surface #
 
@@ -94,7 +93,7 @@ adda -shape ellipsoid 1 2 -size 0.05 -lambda 0.488 -surf 0.05 4.37 0.08 -m 1.35 
 ```
 where `<nx>` varied between 16 and 64. Shown below is normalized (to have maximum value of 1) perpendicular and parallel (to scattering plane) scattering intensities. Scattering angle corresponds to the spherical angle _θ_ of laboratory reference frame inside the main scattering plane (given by incident and reflected direction).
 
-![http://a-dda.googlecode.com/svn/wiki/Fe_spheroid.svg](http://a-dda.googlecode.com/svn/wiki/Fe_spheroid.svg)
+![Fe spheroid on substrate](Fe_spheroid.svg)
 
 Reference results are T-matrix simulations, digitized from Fig.4.7 of [[10](#references)] with appropriate modification of scattering angle definition. The agreement is perfect for perpendicular intensity, but there are some discrepancies for parallel. The latter, however, clearly diminish with refining discretization, and the remaining difference is compared to that between the T-matrix and discrete-sources-method in [[10](#references)] (data not shown).
 
@@ -104,7 +103,7 @@ adda -size 0.1 -lambda 0.488 -surf 0.05 1.5 0 -m 0.25 3.14 -prop 1 0 0.577350 -n
 ```
 Shown below are perpendicular and parallel scattering intensities (_S_<sub>11</sub>−_S_<sub>12</sub> and _S_<sub>11</sub>+_S_<sub>12</sub> respectively) in the main scattering plane.
 
-![http://a-dda.googlecode.com/svn/wiki/Ag_sphere.svg](http://a-dda.googlecode.com/svn/wiki/Ag_sphere.svg)
+![Ag sphere on substrate](Ag_sphere.svg)
 
 Reference T-matrix results were provided by Vladimir Schmidt (calculated using [NFM-DS](http://www.scattport.org/index.php/programs-menu/t-matrix-codes-menu/239-nfm-ds)) and coincide with that in Fig.4.10 of [[10](#references)]. The former raw results were multiplied by a factor _π_(_kR_)<sup>2</sup>/_m_<sub>s</sub>, where _k_ is the free-space wavenumber.
 
@@ -115,7 +114,7 @@ adda -beam dipole 0 0 <z> -prop <ori> -size 10 -lambda 354 -m 0.20959 1.43592 -s
 ```
 where `<z>` is the distance from dipole to sphere center (in nm), i.e. distance from surface + 5, and `<ori>` is "1 0 0" or "0 0 1" for parallel and perpendicular orientations of the dipole respectively. The results are similar to Fig.1 of [[13](#references)], which were obtained with a previous version of `ADDA` using a number of code hacks and workarounds. Now only `ADDA` itself is required for such simulations.
 
-![http://a-dda.googlecode.com/svn/wiki/DRE_distance.svg](http://a-dda.googlecode.com/svn/wiki/DRE_distance.svg)
+![Decay rate enhancement vs. distance](DRE_distance.svg)
 
 Second, convergence of the results with refining discretization was studied for total decay-rate enhancement for a dipole (in two orientations) at 5 nm from the sphere surface as a function of the wavelength. The command line is
 ```
@@ -123,7 +122,7 @@ adda -beam dipole 0 0 10 -prop <ori> -size 10 -lambda <lam> -m <mre> <mim> -sym 
 ```
 where `<nx>` is either 80 or 160, `<lam>` is the wavelength (in nm), and `<mre>` and `<mim>` are the corresponding real and imaginary parts of the refractive index.
 
-![http://a-dda.googlecode.com/svn/wiki/DRE_lambda.svg](http://a-dda.googlecode.com/svn/wiki/DRE_lambda.svg)
+![Decay rate enhancement vs. wavelength](DRE_lambda.svg)
 
 The agreement with EET becomes better with refining discretization. Moreover, if we use the simplest Richardson-type extrapolation of the DDA results to zero dipole size (see [[9](#references)] for justification), i.e. 2×(result for _n<sub>x</sub>_=160) − (result for _n<sub>x</sub>_=80), the agreement (green vs. blue line in the figure) is almost perfect (mostly within the line width).
 
@@ -136,7 +135,7 @@ adda -lambda 1 -size 1 -shape read 64layers.geom -ntheta 180 -sym enf -anisotr -
 ```
 where both shape file and the list of different refractive indices was generated by a separate program. The following comparison results are adapted from Fig.7 of [[14](#references)].
 
-![http://a-dda.googlecode.com/svn/wiki/inhom_anis_sphere.svg](http://a-dda.googlecode.com/svn/wiki/inhom_anis_sphere.svg)
+![Inhomogeneous anisotropic sphere](inhom_anis_sphere.svg)
 
 The agreement improves with increasing the number of layers. Moreover, if we use the simplest Richardson-type extrapolation of the DDA results to zero layer (dipole) size (see [[9](#references)] for justification), i.e. 2×(result for _n<sub>L</sub>_=64) − (result for _n<sub>L</sub>_=32), the agreement (green vs. blue line in the figure) is almost perfect (mostly within the line width).
 
