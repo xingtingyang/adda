@@ -16,7 +16,7 @@ The following description is for latest stable version of the released packages,
     * `zip_packages` - script to checkout and zip packages on Unix system
   * `doc/` – documentation
     * `doxy/Doxyfile` - config file for [doxygen](http://www.doxygen.org) to automatically produce code documentation
-    * `gv/` - sources for schemes used in CodeDesign, they are processed into svg files using [GraphViz](http://www.graphviz.org/)
+    * `gv/` - sources for schemes used in [CodeDesign](CodeDesign.md), they are processed into svg files using [GraphViz](http://www.graphviz.org/)
     * `copyleft` – GNU General Public License
     * `history` – complete history of `ADDA` development
     * `manual.doc` – source of the manual in MS Word format
@@ -53,7 +53,7 @@ The following description is for latest stable version of the released packages,
       * `Makefile` - makefile for sequential version (called from the main `Makefile`)
     * `Makefile` – main makefile
     * `common.mk` - common part of child makefiles, including all compilation directives.
-    * `ADDAmain.c`, `CalculateE.c`, `calculator.c`, `chebyshev.c`, `cmplx.h`, `comm.c/h`, `const.h`, `crosssec.c/h`, `debug.c/h`, `fft.c/h`, `function.h`, `GenerateB.c`, `interaction.c/h`, `io.c/h`, `iterative.c`, `linalg.c/h`, `make_particle.c`, `matvec.c`, `memory.c/h`, `oclcore.c/h`, `os.h`, `param.c/h`, `parbas.h`, `prec_time.c/h`, `Romberg.c/h`, `sinint.c`, `sparse_ops.h`, `timing.c/h`, `types.h`, `vars.c/h` – C source and header files of `ADDA` (see CodeDesign)
+    * `ADDAmain.c`, `CalculateE.c`, `calculator.c`, `chebyshev.c`, `cmplx.h`, `comm.c/h`, `const.h`, `crosssec.c/h`, `debug.c/h`, `fft.c/h`, `function.h`, `GenerateB.c`, `interaction.c/h`, `io.c/h`, `iterative.c`, `linalg.c/h`, `make_particle.c`, `matvec.c`, `memory.c/h`, `oclcore.c/h`, `os.h`, `param.c/h`, `parbas.h`, `prec_time.c/h`, `Romberg.c/h`, `sinint.c`, `sparse_ops.h`, `timing.c/h`, `types.h`, `vars.c/h` – C source and header files of `ADDA` (see [CodeDesign](CodeDesign.md))
     * `oclkernels.cl` - OpenCL kernels
     * `mt19937ar.c/h` – source and header files for Mersenne twister random generator
     * `updsvnrev.sh` - script to obtain revision number of the source and store it into generated `svnrev.h`
