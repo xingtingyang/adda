@@ -72,7 +72,7 @@ x = a*(b+c) + b*(a+c)
  */
 ```
 
-Most of the above format settings are available as [configuration file](http://a-dda.googlecode.com/svn/wiki/eclipseCDT_style.xml) to be imported into [Eclipse CDT](http://www.eclipse.org/cdt/).
+Most of the above format settings are available as [configuration file](eclipseCDT_style.xml) to be imported into [Eclipse CDT](http://www.eclipse.org/cdt/).
 
 # Makefiles and other (shell) scripts #
   * Makefiles contain starting comment similar to source files.
