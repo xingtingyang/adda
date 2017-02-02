@@ -4,7 +4,8 @@ A variety of links to different application examples of `ADDA` and to related co
 
 # Codes that use `ADDA` #
   * [HoloPy](http://launchpad.net/holopy) can be used as a python wrapper for `ADDA` ([tutorial](http://manoharan.seas.harvard.edu/holopy/users/dda_tutorial.html)).
-  * [R wrapper for ADDA](http://github.com/baptiste/adda/wiki/wrapper_primer).
+  * [R wrapper for ADDA](https://github.com/baptiste/adda/wiki/wrapper_primer).
+  * [Python wrapper for ADDA](https://github.com/aquilesC/plasmon_adda) to calculate spectra of nanoparticles ([tutorial](https://www.aquicarattino.com/science/plasmon-resonance/))
 
 # Tools that operate with `ADDA` input/output #
 Here we do not list tools/workflows that are supplied in [misc/](http://code.google.com/p/a-dda/source/browse/#svn%2Ftrunk%2Fmisc) folder ([short overview](PackageDescription.md)).
