@@ -11,7 +11,7 @@ It is `ADDA`.
   * Scan through the [manual](http://a-dda.googlecode.com/svn/trunk/doc/manual.pdf) to understand where to get more details if needed.
 
 ## Do you have GUI/wrapper for `ADDA`? Can `ADDA` plot its results? ##
-Development of `ADDA` is focused on its core functionality (that is efficient and large-scale simulations of interaction of electromagnetic waves with particles). Any kind of pre- and post-processing can be implemented by scripts or independent programs without changing the core code. Some examples can be found in [misc/](http://code.google.com/p/a-dda/source/browse/#svn%2Ftrunk%2Fmisc) folder ([short overview](PackageDescription.md)). Also a few [wrappers](https://code.google.com/p/a-dda/wiki/Links#Codes_that_use_ADDA) are available.
+Development of `ADDA` is focused on its core functionality (that is efficient and large-scale simulations of interaction of electromagnetic waves with particles). Any kind of pre- and post-processing can be implemented by scripts or independent programs without changing the core code. Some examples can be found in [misc/](http://code.google.com/p/a-dda/source/browse/#svn%2Ftrunk%2Fmisc) folder ([short overview](PackageDescription.md)). Also a few [wrappers](Links.md#Codes_that_use_ADDA) are available.
 
 ## I run `ADDA` and get strange output (different from my expectations). What should I do? ##
   * Make sure you are using the latest version of `ADDA`. Read carefully the relevant parts of the [manual](http://a-dda.googlecode.com/svn/trunk/doc/manual.pdf).
