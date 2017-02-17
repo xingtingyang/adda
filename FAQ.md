@@ -1,14 +1,12 @@
 This list is far from being complete, therefore please send your questions to [adda-discuss@googlegroups.com](mailto:adda-discuss@googlegroups.com).
 
-
-
 # General #
 
 ## What is the official name of the code? ##
-It is `ADDA`. You may wonder why the corresponding Google Code identifier is "a-dda", as shown in address bar and in the top-left corner of the page. That is because "adda" was already occupied at Google Code by unrelated project, when we moved here.
+It is `ADDA`.
 
 ## I am new to `ADDA` and want to simulate ... What should I start with? ##
-  * Read GettingStarted and other pages it links to.
+  * Read [GettingStarted](GettingStarted.md) and other pages it links to.
   * In particular, go through the [Tutorial](Tutorial.md) to understand basic `ADDA` functionality.
   * Scan through the [manual](http://a-dda.googlecode.com/svn/trunk/doc/manual.pdf) to understand where to get more details if needed.
 
@@ -22,10 +20,10 @@ Development of `ADDA` is focused on its core functionality (that is efficient an
 
 ## I have found a bug in `ADDA`. What should I do? ##
   * Make sure you are using the latest version of `ADDA`. If you modified the code yourself, try the original release.
-  * Look at the list of known bugs at the [issue tracker](http://code.google.com/p/a-dda/issues/list?q=type=Defect), maybe your bug is already known.
+  * Look at the list of known bugs at the [issue tracker](https://github.com/adda-team/adda/labels/bug), maybe your bug is already known.
   * Try to understand how exactly the bug occurs, write down the sequence of actions that lead to it.
   * Please try to localize the bug, i.e. try to remove as much command line parameters as possible without removing the bug. Also try to use default versions of input files, which you have modified.
-  * [Submit your bug](http://code.google.com/p/a-dda/issues/entry) to the issue tracker, including input files and `Makefile` that you used for compilation. Do not forget to include all the relevant output files, at least `log`. Please also include a brief description of your operation system and hardware. We will try to fix the bug as soon as possible.
+  * [Submit your bug](https://github.com/adda-team/adda/issues/new) to the issue tracker, including input files and `Makefile` that you used for compilation. Do not forget to include all the relevant output files, at least `log`. Please also include a brief description of your operation system and hardware. We will try to fix the bug as soon as possible.
 
 # Defining scattering problem #
 
@@ -53,9 +51,9 @@ Starting from v.1.3b4 `ADDA` can rigorously and efficiently handle particles nea
 It is defined as in Bohren & Huffman "Absorption and scattering of Light by Small Particles" (1983), and it is not normalized. Some other codes may compute Stokes scattering matrix, which is normalized so that 1,1-element is equal to 1 after averaging over the whole solid angle. This matrix should be multiplied by _πC_<sub>sca</sub>/_λ_<sup>2</sup> to get Mueller matrix. _C_<sub>sca</sub> is the scattering cross section for unpolarized light, equal to average of scattering cross sections for any two perpendicular incident polarizations. See section _Mueller matrix_ of the [manual](http://a-dda.googlecode.com/svn/trunk/doc/manual.pdf) for more details.
 
 ## How to calculate near-field using `ADDA`? ##
-We are currently working to implement this feature in a convenient manner ([issue 10](https://code.google.com/p/a-dda/issues/detail?id=10)). For now there are two possible workarounds:
+We are currently working to implement this feature in a convenient manner ([issue 10](https://github.com/adda-team/adda/issues/10)). For now there are two possible workarounds:
   * (Recommended)  You may save dipole polarizations to file by `ADDA` and then use auxiliary package `misc/near_field` (see [description](http://a-dda.googlecode.com/svn/trunk/misc/near_field/nearfield_manual.txt)).
   * Or you may extend the computational box with "dummy" dipoles located at points where you wish to calculate near-field. Saving the internal fields by `ADDA` will then produce the desired result, but at expense of extra computational time. Please see the section _Near-field_ of the [manual](http://a-dda.googlecode.com/svn/trunk/doc/manual.pdf) for details.
 
 ## How to calculate the wavelength spectrum of extinction/scattering/etc.? ##
-Currently there is no automatic way to do it, although we plan to implement it ([issue 35](https://code.google.com/p/a-dda/issues/detail?id=35)). Currently one may either perform separate simulation for each value of wavelength, or semi-automate this process by some kind of script or wrapper. The latter options are discussed in comments to [issue 35](https://code.google.com/p/a-dda/issues/detail?id=35).
+Currently there is no automatic way to do it, although we plan to implement it ([issue 35](https://github.com/adda-team/adda/issues/35)). Currently one may either perform separate simulation for each value of wavelength, or semi-automate this process by some kind of script or wrapper. The latter options are discussed in comments to [issue 35](https://github.com/adda-team/adda/issues/35).
