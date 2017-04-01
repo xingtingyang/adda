@@ -28,4 +28,4 @@ Otherwise, the sparse-mode executable is used just like the FFT (normal) one, bu
   * While the sparse `ADDA` uses MPI effectively for CPU parallelization, GPU parallelization using OpenCL is not currently available.
   * WKB initial field (`-init_field wkb`) and precise timing (separate compilation mode) are not supported in sparse mode.
   * All polarization and dipole interaction terms used in normal `ADDA` mode are available. However, optimized computation of the interaction term is currently implemented only for the point-dipole interaction (the `-int poi` option, which is the default). For the other interaction terms, sparse `ADDA` falls back to the default implementation, which is slower and also does not benefit from the SSE3 acceleration. Because of this, the point-dipole interaction is recommended for sparse-mode computations.
-  * See also [corresponding issues](http://code.google.com/p/a-dda/issues/list?q=label:Sparse).
+  * See also [corresponding issues](https://github.com/adda-team/adda/issues?q=label:Sparse).
