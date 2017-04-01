@@ -13,7 +13,7 @@ All places in the code, where something should be added, are commented. These co
     * `n_sizeX` – absolute size of the particle, defined by shape (only when relevant);
     * all other auxiliary variables that are used in shape generation (below).
 
-  If you do not initialize `yx_ratio` and/or `zx_ratio` set it explicitly to `UNDEF`. If you need temporary local variables (which are used only in this part of the code), either use `tmp1` – `tmp3` or define your own (with more informative names) in the beginning of `InitShape` function.
+    If you do not initialize `yx_ratio` and/or `zx_ratio` set it explicitly to `UNDEF`. If you need temporary local variables (which are used only in this part of the code), either use `tmp1` – `tmp3` or define your own (with more informative names) in the beginning of `InitShape` function.
   * Add definition of the new shape as a new case in the long switch in function `MakeParticle` in file [make\_particle.c](http://code.google.com/p/a-dda/source/browse/trunk/src/make_particle.c) (in alphabetical order). This definition should set the variable `mat` – index of domain – for each point, specified by (`xr`,`yr`,`zr`) – coordinates divided by _D<sub>x</sub>_. Do not set `mat` for void dipoles. If you need temporary local variables (which are used only in this part of the code), either use `tmp1` – `tmp3` or define your own (with more informative names) in the beginning of `MakeParticle` function.
 
 Please refer to section _Defining a Scatterer_ of the [manual](http://a-dda.googlecode.com/svn/trunk/doc/manual.pdf) for description of the above-mentioned variables and for general overview of how the particle shape is treated inside `ADDA`.
