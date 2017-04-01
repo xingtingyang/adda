@@ -10,7 +10,7 @@ A variety of links to different application examples of `ADDA` and to related co
 # Tools that operate with `ADDA` input/output #
 Here we do not list tools/workflows that are supplied in [misc/](http://code.google.com/p/a-dda/source/browse/#svn%2Ftrunk%2Fmisc) folder ([short overview](PackageDescription.md)).
 
-  * [LiteBil](http://albin.abo.fi/~jkniivil/litebil/) allows visualization of `ADDA` and `DDSCAT` shape files.
+  * [LiteBil](http://users.abo.fi/jkniivil/litebil/) allows visualization of `ADDA` and `DDSCAT` shape files.
 
   * The following tools produce shape files for `DDSCAT` that can also be read by `ADDA`:
     * [DDSCAT File Conversion Tool](http://nanohub.org/resources/ddaconvert) converts `.obj` files to shape files. Similar to [misc/pip](http://a-dda.googlecode.com/svn/trunk/misc/pip/).
