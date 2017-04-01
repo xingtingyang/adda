@@ -42,7 +42,7 @@ Distinctive feature of `ADDA` is the ability to run a _single_ DDA simulation in
 # Easy to use #
   * Powerful command line interface.
   * Internal help system (`-h [...]` command line option).
-  * A lot of information in the [wiki pages](GettingStarted.md) and [manual](http://a-dda.googlecode.com/svn/trunk/doc/manual.pdf).
+  * A lot of information in the [wiki pages](GettingStarted.md) and [manual](../master/doc/manual.pdf).
   * Active [discussion group](http://groups.google.com/group/adda-discuss) to help users.
   * Checkpoint system to break and then continue long simulations.
   * Simulation results are saved into separate directory with automatically generated unique name. Thus, multiple parallel runs can be easily performed.
@@ -54,10 +54,10 @@ Distinctive feature of `ADDA` is the ability to run a _single_ DDA simulation in
   * Tested and trusted by the community. As of summer 2013 it is used by about 60 researchers, who published [more than 100 journal papers](Publications.md), which somehow used `ADDA`.
   * Tested by [comparison with other methods and codes](ComparisonOtherCodes.md).
   * New releases are tested against the previous ones by automatic testing suites.
-  * Open development process, including [issue tracker](http://code.google.com/p/a-dda/issues) and availability of the [current source](http://code.google.com/p/a-dda/source/browse/), allows pre-release testing.
+  * Open development process, including [issue tracker](https://github.com/adda-team/adda/issues) and availability of the [current source](../../), allows pre-release testing.
 
 # Actively developed #
-  * Although `ADDA` is already a mature package, there are large [plans for further development](http://code.google.com/p/a-dda/issues).
-  * [Development process](http://code.google.com/feeds/p/a-dda/issueupdates/basic) is ongoing albeit irregular. The goal is to make at least one release per year.
-  * Number of [contributors](http://code.google.com/p/a-dda/people/list) is slowly increasing due to the open nature of Google Code platform.
+  * Although `ADDA` is already a mature package, there are large [plans for further development](https://github.com/adda-team/adda/issues).
+  * [Development process](https://github.com/adda-team/adda/commits/master) is ongoing albeit irregular. The goal is to make at least one release per year.
+  * Number of [contributors](https://github.com/adda-team/adda/graphs/contributors) is slowly increasing due to the open nature of GitHub platform. Some have contributed only to development branches, that have not yet been incorporated into the master branch.
   * New contributors are [welcome](InstructionCommitters.md)! In particular, there are extensive instructions, how to make simple changes to the code (e.g. [adding new predefined shape](AddingShape.md)).
