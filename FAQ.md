@@ -35,7 +35,7 @@ To produce a shape file you can use any programming language/software. `ADDA` co
   * Hyperfun (`misc/hyperfun`, see [description](http://a-dda.googlecode.com/svn/trunk/misc/hyperfun/README)) provides a toolchain for working with [Hyperfun models](http://hyperfun.org). Part of this toolchain can be used to transform other shape formats, like [.wrl](http://en.wikipedia.org/wiki/VRML).
 
 ## How to visualize shape files of `ADDA`? ##
-The most general solution is freely available software [LiteBil](http://albin.abo.fi/~jkniivil/litebil/). It allows both quick testing of shape files produced by `ADDA` or other software, and producing nice pictures for publication.
+The most general solution is freely available software [LiteBil](http://users.abo.fi/jkniivil/litebil/). It allows both quick testing of shape files produced by `ADDA` or other software, and producing nice pictures for publication.
 
 There are also tools developed by Roman Schuh, which are available upon request. See [this discussion](http://groups.google.com/group/adda-discuss/browse_thread/thread/c715bd07cc9274d8#) for details.
 
