@@ -37,3 +37,4 @@ The above list doesn't include [current contributors](http://code.google.com/p/a
   * The NATO Science for Peace program (project 977976, 2002-2006)
   * European Research Council (ERC) Starting Grant FP7 Project DEDOM (grant 207441, 2008-2013).
   * Program of the Russian Government "Research and educational personnel of innovative Russia" - contract P2497 (2009-2011) and grant 8752 (2012-2013).
+  * Russian Science Foundation (grant 14-15-00155, 2014-2016)
