@@ -11,18 +11,18 @@
 * There is a known bug when using `clAmdFft` together with `libOpenCL.so` provided by Nvidia GPU driver. During linking spurious errors appear, like:
 
   ```
-...libclAmdFft.Runtime.so: undefined reference to `cl...@OPENCL_1.0'
-```
+  ...libclAmdFft.Runtime.so: undefined reference to `cl...@OPENCL_1.0'
+  ```
   It has been discussed in a few places ([1](http://devgurus.amd.com/thread/159586), [2](http://devgurus.amd.com/thread/158982), [3](http://devgurus.amd.com/thread/157052)). Currently, the simplest workaround seems to uncomment the line
   ```
-LDFLAGS +=-Wl,--unresolved-symbols=ignore-in-shared-libs
-```
+  LDFLAGS +=-Wl,--unresolved-symbols=ignore-in-shared-libs
+  ```
   in `src/ocl/Makefile`. On Unix it is even better to switch to open-source implementation of `libOpenCL.so` (see [OpenCL#Headers_and_libraries](OpenCL.md#headers-and-libraries))
 * Also on Unix `clAmdFft` may need pthread library, which is not linked by default. One way to fix this problem is to uncomment the following line in `src/ocl/Makefile`.
 
   ```
-LDLIBS += -lpthread
-```
+  LDLIBS += -lpthread
+  ```
 
 # Windows #
 
