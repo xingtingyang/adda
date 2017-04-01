@@ -8,9 +8,9 @@ To be able to compile `ADDA` on Windows you need to install `MSYS` and `MinGW`.
 * Open command prompt and run
 
   ```
-cd C:\MinGW\bin
-mingw-get install msys-base msys-coreutils-ext
-```
+  cd C:\MinGW\bin
+  mingw-get install msys-base msys-coreutils-ext
+  ```
   The latter part of `MSYS` (`msys-coreutils-ext`) is not required for `ADDA` compilation, but may be needed for executing Bash scripts, e.g. `tests/2exec/comp2exec`.
 * Add `C:\MinGW\MSYS\1.0\bin` to Windows environmental variable `PATH`.
 
@@ -21,9 +21,9 @@ Continuing along the [MinGW instructions](http://mingw.org/wiki/Getting_Started)
 * Open command prompt and run
 
   ```
-cd C:\MinGW\bin
-mingw-get install gcc fortran c++
-```
+  cd C:\MinGW\bin
+  mingw-get install gcc fortran c++
+  ```
 * Add `C:\MinGW\bin` and to Windows environmental variable `PATH`.
 
 ## 64-bit Windows ##
@@ -39,46 +39,46 @@ To avoid need to manually  specify include and library paths for external packag
 * Locate the library folder of your gcc installation, its path (`<gcclib-path>`) should be one of the following
 
   ```
-C:/MinGW/lib/gcc/mingw32/<gcc-version>
-C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/<gcc-version>
-```
+  C:/MinGW/lib/gcc/mingw32/<gcc-version>
+  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/<gcc-version>
+  ```
   for 32- and 64-bit installations (described above), respectively. Here `<gcc-version>` is the installed version of `gcc`, e.g., `4.5.2`.
 * Look for file `specs` in folder `<gcclib-path>`. If it does not exist, execute
 
   ```
-gcc -dumpspecs > <gcclib-path>/specs
-```
+  gcc -dumpspecs > <gcclib-path>/specs
+  ```
 * Modify `specs` file:
   * Add the following to the beginning:
 
     ```
-*local_prefix:
-c:/MinGW/msys/1.0/local/
+    *local_prefix:
+    c:/MinGW/msys/1.0/local/
 
-*local_includes:
--I%(local_prefix)include
+    *local_includes:
+    -I%(local_prefix)include
 
-*local_lib_search:
--L%(local_prefix)lib
-```
+    *local_lib_search:
+    -L%(local_prefix)lib
+    ```
   * Add `%(local_includes)` to end of definition for `cpp`, changing it to, e.g.,
 
     ```
-*cpp:
-%{posix:-D_POSIX_SOURCE} %{mthreads:-D_MT} %(local_includes)
-```
+    *cpp:
+    %{posix:-D_POSIX_SOURCE} %{mthreads:-D_MT} %(local_includes)
+    ```
   * Add `%(local_includes)` to end of definition for `cc1plus`, changing it to, e.g.,
 
     ```
-*cc1plus:
-%(local_includes)
-```
+    *cc1plus:
+    %(local_includes)
+    ```
   * Add `%(local_lib_search)` to end of definition for `link_libgcc`, changing it to, e.g.,
 
     ```
-*link_libgcc:
-%D %(local_lib_search)
-```
+    *link_libgcc:
+    %D %(local_lib_search)
+    ```
 
 To debug `ADDA`, `gdb` need to be installed. This is done automatically during the installation of TDM\_GCC for 64-bit Windows, described above. To install `gdb` in the `MinGW` environment for 32-bit Windows, run
 ```
@@ -105,44 +105,44 @@ Below we describe additional steps to set up the environment on 64-bit Windows 7
 * Create symbolic links (with administrative privileges):
 
   ```
-cd C:\MinGW\MSYS\1.0\local
-mklink lib32\libfftw3.dll C:\Windows\SysWOW64\libfftw3-3.dll
-mklink lib\libfftw3.dll C:\Windows\System32\libfftw3-3.dll
-mklink /D include\mpich2 "C:\Program Files\MPICH2\include"
-mklink /D include\mpich2_32 "C:\Program Files (x86)\MPICH2\include"
-mklink /D lib\mpich2 "C:\Program Files\MPICH2\lib"
-mklink /D lib32\mpich2 "C:\Program Files (x86)\MPICH2\lib"
-mklink lib32\OpenCL.dll C:\Windows\SysWOW64\OpenCL.dll
-mklink lib\OpenCL.dll C:\Windows\System32\OpenCL.dll
-mklink /D include\clAmdFft "C:\Program Files (x86)\AMD\clAmdFft\include\"
-mklink lib32\clAmdFft.Runtime.dll "C:\Program Files (x86)\AMD\clAmdFft\bin32\clAmdFft.Runtime.dll"
-mklink lib\clAmdFft.Runtime.dll "C:\Program Files (x86)\AMD\clAmdFft\bin64\clAmdFft.Runtime.dll"
-mklink C:\Windows\SysWOW64\clAmdFft.Runtime.dll "C:\Program Files (x86)\AMD\clAmdFft\bin32\clAmdFft.Runtime.dll"
-mklink C:\Windows\System32\clAmdFft.Runtime.dll "C:\Program Files (x86)\AMD\clAmdFft\bin64\clAmdFft.Runtime.dll"
-mklink /D include\clAmdBlas "C:\Program Files (x86)\AMD\clAmdBlas\include\"
-mklink lib32\clAmdBlas.dll "C:\Program Files (x86)\AMD\clAmdBlas\bin32\clAmdBlas.dll"
-mklink lib\clAmdBlas.dll "C:\Program Files (x86)\AMD\clAmdBlas\bin64\clAmdBlas.dll"
-mklink C:\Windows\SysWOW64\clAmdBlas.dll "C:\Program Files (x86)\AMD\clAmdBlas\bin32\clAmdBlas.dll"
-mklink C:\Windows\System32\clAmdBlas.dll "C:\Program Files (x86)\AMD\clAmdBlas\bin64\clAmdBlas.dll"
-```
+  cd C:\MinGW\MSYS\1.0\local
+  mklink lib32\libfftw3.dll C:\Windows\SysWOW64\libfftw3-3.dll
+  mklink lib\libfftw3.dll C:\Windows\System32\libfftw3-3.dll
+  mklink /D include\mpich2 "C:\Program Files\MPICH2\include"
+  mklink /D include\mpich2_32 "C:\Program Files (x86)\MPICH2\include"
+  mklink /D lib\mpich2 "C:\Program Files\MPICH2\lib"
+  mklink /D lib32\mpich2 "C:\Program Files (x86)\MPICH2\lib"
+  mklink lib32\OpenCL.dll C:\Windows\SysWOW64\OpenCL.dll
+  mklink lib\OpenCL.dll C:\Windows\System32\OpenCL.dll
+  mklink /D include\clAmdFft "C:\Program Files (x86)\AMD\clAmdFft\include\"
+  mklink lib32\clAmdFft.Runtime.dll "C:\Program Files (x86)\AMD\clAmdFft\bin32\clAmdFft.Runtime.dll"
+  mklink lib\clAmdFft.Runtime.dll "C:\Program Files (x86)\AMD\clAmdFft\bin64\clAmdFft.Runtime.dll"
+  mklink C:\Windows\SysWOW64\clAmdFft.Runtime.dll "C:\Program Files (x86)\AMD\clAmdFft\bin32\clAmdFft.Runtime.dll"
+  mklink C:\Windows\System32\clAmdFft.Runtime.dll "C:\Program Files (x86)\AMD\clAmdFft\bin64\clAmdFft.Runtime.dll"
+  mklink /D include\clAmdBlas "C:\Program Files (x86)\AMD\clAmdBlas\include\"
+  mklink lib32\clAmdBlas.dll "C:\Program Files (x86)\AMD\clAmdBlas\bin32\clAmdBlas.dll"
+  mklink lib\clAmdBlas.dll "C:\Program Files (x86)\AMD\clAmdBlas\bin64\clAmdBlas.dll"
+  mklink C:\Windows\SysWOW64\clAmdBlas.dll "C:\Program Files (x86)\AMD\clAmdBlas\bin32\clAmdBlas.dll"
+  mklink C:\Windows\System32\clAmdBlas.dll "C:\Program Files (x86)\AMD\clAmdBlas\bin64\clAmdBlas.dll"
+  ```
 
 * Additionally to modification of file `specs`, described in previous section, change the added head of this file to
 
   ```
-*local_prefix:
-c:/MinGW/msys/1.0/local/
+  *local_prefix:
+  c:/MinGW/msys/1.0/local/
 
-*local_incl:
-%(local_prefix)include
+  *local_incl:
+  %(local_prefix)include
 
-*local_includes:
--I%(local_incl) -I%(local_incl)/mpich2%{m32:_32} -I%(local_incl)/clAmdFft -I%(local_incl)/clAmdBlas
+  *local_includes:
+  -I%(local_incl) -I%(local_incl)/mpich2%{m32:_32} -I%(local_incl)/clAmdFft -I%(local_incl)/clAmdBlas
 
-*local_lib:
-%(local_prefix)lib%{m32:32}
+  *local_lib:
+  %(local_prefix)lib%{m32:32}
 
-*local_lib_search:
--L%(local_lib) -L%(local_lib)/mpich2
-```
+  *local_lib_search:
+  -L%(local_lib) -L%(local_lib)/mpich2
+  ```
 
 After the above setup, 64-bit version of `ADDA` can be compiled by running `make ...` out of box. For 32-bit version, add `EXTRA_FLAGS=-m32` to the invocation of `make`.
