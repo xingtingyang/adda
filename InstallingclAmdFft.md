@@ -1,4 +1,4 @@
-
+## Important note: `clAmdFft` (used by ADDA v.1.3b4) is no more available for download. However, [the most recent source of ADDA](../../) is already using its predecessor [clFFT](https://github.com/clMathLibraries/clFFT). Unfortunately, we have not yet completed the detailed procedure for its installation, but it should be similar to the one described below. See also [issue 204](https://github.com/adda-team/adda/issues/204). ##
 
 `clAmdFft` library provides the default way to perform the FFTs in OpenCL version of `ADDA`. This library already significantly outperforms the built-in Apple clFFT routines and is expected to develop further. Therefore, its use on any system with GPU is highly recommended. The following guidelines are based on `clAmdFft` version 1.10.274 (or 321).
 
