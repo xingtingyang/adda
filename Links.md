@@ -17,7 +17,7 @@ Here we do not list tools/workflows that are supplied in [misc/](http://code.goo
     * [DDSCAT File Conversion Tool](http://nanohub.org/resources/ddaconvert) converts `.obj` files to shape files. Similar to [misc/pip](http://a-dda.googlecode.com/svn/trunk/misc/pip/).
     * [DDA polyhedral targets](http://www.fisica.unam.mx/cecilia/codes.html) - a collection of codes to generate shape files of polyhedra.
     * [DDSCAT-tools](http://github.com/feranick/ddscat-tools) generate a sphere randomly covered by smaller spheres, and a slab with a sphere on top of it.
-  * [Python script](https://qiita.com/7of9/items/0ae5d739dd7276f3e1ca) to visualize particle shape together with internal fields.
+  * Python scripts to visualize particle shape, colored by x-position, [using Matplotlib](https://qiita.com/7of9/items/0ae5d739dd7276f3e1ca) or [using Povray](https://qiita.com/7of9/items/383dd7ffc630b31db082) (the latter is much faster).
 
 # Other related (DDA) codes #
   * [DDSCAT](http://code.google.com/p/ddscat/) - popular general-purpose DDA code.
