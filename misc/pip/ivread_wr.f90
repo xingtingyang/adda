@@ -179,7 +179,8 @@ subroutine ivread_wr(filein_name,face_point,face_normal,face_area,face_num,cor3_
       cor3_max, face_max, line_max, material_max, order_max, texture_max, &
       normal_temp, arg_num, object_name, texture_name, texture_temp, &
       transform_matrix, vertex_material, vertex_normal, vertex_tex_uv, &
-	  face_num, filein_type, cor3_num)
+    face_num, filein_type, cor3_num)
+    
 
 !  else
 !

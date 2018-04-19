@@ -83,12 +83,19 @@
 
     numiargc=iargc()
 
+    ! read parameters
     if(numiargc.eq.0) then
         shape_size = 80
+    else if (numiargc.eq.1) then
+        call getarg(1,strafg)
+        read(unit=strafg,fmt=*) shape_size
+        filein_name='shape.obj'
     else
         call getarg(1,strafg)
-        read(unit=strafg,fmt=*)shape_size 
+        read(unit=strafg,fmt=*) shape_size 
+        call getarg(2, filein_name)
     end if
+
 
     print *, 'Maximum shape size = ', shape_size
 
@@ -97,6 +104,7 @@
     zsh = shape_size
     
     NAT = 0
+
     DX(1) = 1.0
     DX(2) = 1.0
     DX(3) = 1.0
@@ -105,14 +113,13 @@
 !
 !   .obj input file name
 !
-	filein_name='shape.obj'
 !
 	call ivread_wr(filein_name,face_point,face_normal,face_area,face_num,node_num,v4,face)
-	
+    
+
 	vv(1:3,1:node_num)=dble(v4(1:3,1:node_num))
 	
-    call cor3_limits(node_max, node_num, v4,&
-         xmin, xave, xmax, ymin, yave, ymax, zmin, zave, zmax)
+    call cor3_limits(node_max, node_num, v4, xmin, xave, xmax, ymin, yave, ymax, zmin, zave, zmax)
     
       PI=4.*ATAN(1.)
 
@@ -120,6 +127,7 @@
          A1(JX)=0.
          A2(JX)=0.
       ENDDO
+      
       A1(1)=1.
       A2(2)=1.
 
@@ -205,12 +213,15 @@
          WRITE(*,*)JZ,NAT
       ENDDO
 
-    WRITE(*,*)NAT
+    WRITE(*,*) NAT
     OPEN(UNIT=12,FILE='shape.dat',STATUS='UNKNOWN')
+    
     WRITE(12,FMT=92)NBX,NBY,NBZ,NAT,A1,A2,DX
+    
     DO JX=1,NAT
        WRITE(12,FMT=93)JX,IXYZ(JX,1),IXYZ(JX,2),IXYZ(JX,3),ICOMP(JX,1),ICOMP(JX,2),ICOMP(JX,3)
     ENDDO
+
     CLOSE(UNIT=12)
 
 
@@ -222,7 +233,7 @@
        3F9.6,' = lattice spacings (d_x,d_y,d_z)/d',/,&
        ' 0.0 0.0 0.0',/,&
        '     JA  IX  IY  IZ ICOMP(x,y,z)')
-93 Format(I7,3I4,3I2)
+93 Format(I7,3I5,3I2)
 
 end
 
